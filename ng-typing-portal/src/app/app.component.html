@@ -1,0 +1,110 @@
+ 
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Logo"
+    src="" />
+  <span>Typing Portal</span>
+</div>
+
+
+<div class="content" role="main">
+  <div class="controls-space">
+    <h2> Set your target</h2>
+    <br/>
+    <span class="errorDiv">
+      {{controlErrorMessage}}
+    </span>
+    <br/>
+
+    <form id="typing-targetForm" class="form-content" #typingTargetForm="ngForm" 
+    (ngSubmit)="typingTargetForm.form.valid && SetTarget(typingTargetForm.value)">
+    
+    
+    <table class="controls-table"  >
+      <tr>
+        <td> 
+          <label> Set the timer in seconds <span class="requireStar">*</span> </label>  <br/>
+          <input class="controls-input" type="text" name="wordTimer" title="word timer" #wordTimer="ngModel"  ngModel required />
+          <div *ngIf="typingTargetForm.submitted && wordTimer.invalid"> 
+            <div *ngIf="wordTimer.errors" class="errorDiv" >
+              * Timer is required 
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <label> Set the target word count against the timer <span class="requireStar">*</span> </label>  <br/>
+          <input  class="controls-input" type="text" name="wordCount" title="word count" #wordCount="ngModel"  ngModel required  />
+          <div *ngIf="typingTargetForm.submitted && wordCount.invalid"  >
+            <div class="errorDiv" *ngIf="wordCount.errors">
+              * Word Count is required
+            </div>
+          </div>
+        </td> 
+
+        <td> <button class="setControls-btn" type="submit" > Set Targets</button></td>
+  
+      </tr>
+
+      <tr  *ngIf="loadTargetContent" >
+        
+        <td colspan="2"   >
+          <h2> Set Targets: </h2>
+          <h3> Target Timer: {{targetTimer}} seconds , &nbsp;&nbsp;Target Word Count: {{targetWordCount}},&nbsp;&nbsp; Achieved Word Count: {{achievedWordCount}}  </h3>
+        </td>
+        
+        
+        <td> <button class="letsType-btn" type="button" (click)="BeginTyping()" > Let's Type</button></td>
+
+      </tr>
+
+       
+    </table> 
+
+    </form>
+  </div>
+
+</div>
+
+<hr size="1" >
+ 
+<form *ngIf="loadTypingSpace"  id="typing-portalForm" #typingPortalForm="ngForm" 
+(ngSubmit)="typingPortalForm.form.valid && EvaluateSubmission(typingPortalForm.value)">
+<div class="typing-space" >
+
+  <h1> Timer:  <span class="errorDiv">  {{remainingTime}}  </span>  </h1>
+  <br />
+  <br />   <br />
+  <table class="typing-space-table">
+    <tr>
+
+      <td>
+        <div class="typing-area"> 
+          <textarea class="typing-textarea" title="typing area" placeholder="start typing...." name="typingTextArea" #typingTextArea="ngModel" ngModel required ></textarea> 
+          <div *ngIf="typingPortalForm.submitted && typingTextArea.invalid"  class="text-danger">
+            <div *ngIf="typingTextArea.errors">
+              * Input is required
+            </div>
+          </div>
+          <br />
+          <button  class="evaluate-btn"  type="submit" > Evaluate</button> 
+        </div> 
+
+      </td>
+ 
+    </tr>
+  </table>
+
+ 
+  
+
+
+ 
+</div>
+
+</form>
+ 
+
+<router-outlet></router-outlet>

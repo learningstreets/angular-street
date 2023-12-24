@@ -1,0 +1,27 @@
+[
+    {
+    "userID":1,
+    "userName": "Jon",
+    "userLocation":"Home"
+},
+{
+    "userID":2,
+    "userName": "Sam",
+    "userLocation":"Office"
+},
+{
+    "userID":3,
+    "userName": "Ron",
+    "userLocation":"Home"
+},
+{
+    "userID":4,
+    "userName": "Don",
+    "userLocation":"Home"
+},
+{
+    "userID":5,
+    "userName": "Bonny",
+    "userLocation":"Home"
+}
+]

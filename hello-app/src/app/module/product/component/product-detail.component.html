@@ -1,0 +1,12 @@
+<p>product-detail works!</p>
+
+
+<button class="btn btn-primary" (click)="onBack()" > Back</button>
+
+<div *ngIf="user" >
+
+    Product Name: {{user.userName}} 
+
+    <app-product-rating></app-product-rating>
+
+</div>
